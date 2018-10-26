@@ -1,0 +1,1 @@
+Include your images in the img folder

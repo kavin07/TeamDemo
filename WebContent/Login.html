@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Comparo</title>
+<script src="js/shared/angular.js"></script>
+<script src="js/shared/angular-route.js"></script>
+<script src="js/shared/angular-cookies.js"></script>
+<script src="js/user/Application.js"></script>
+<script src="js/user/Controller.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+
+
+</head>
+<body ng-app="Application" background="img/OnePlus-6.jpg"
+	style="background-size: cover" ng-controller="LoginController">
+	<nav class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#mynav-collapse">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+
+			</button>
+			<a href="#" class="navbar-brand" style="color: white">Comparo-Arena</a>
+		</div>
+	</nav>
+
+
+	<div class="row">
+		<div class="col-md-5 col-md-offset-1 container" style="color: black;"
+			align="justify">
+			<h1 id="text_color" style="color: white;">
+				<b>Comparo-Arena</b>
+			</h1>
+			<br>
+
+			<h4 style="color: white">
+				<i>Welcome to No.1 Mobile comparison website..!! &nbsp &nbsp
+					&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <br> <br>
+					Compare, Choose & Buy Smart!!! <br> <br> Login and Start
+					exploring.
+				</i>
+			</h4>
+			<br> <br>
+			<table>
+				<tbody>
+					<tr>
+						<td><img src="img/Androi_Versions.jpg"
+							class="img-responsive img-rounded" style="border-radius: 25px;" /></td>
+					</tr>
+			</table>
+		</div>
+		<br> <br> <br>
+		<form ng-submit="loginForm.submitTheForm()">
+			<div class="col-md-4 col-md-offset-1"
+				style="color: white; background-color: rgba(255, 255, 255, 0.4); border-radius: 25px;"
+				align="justify">
+
+				<br>
+				<h2 align="center"
+					style="font-weight: bold; font-size: 45px; font-family: monospace;">
+					LOGIN</h2>
+
+				<div class="form-group">
+					<label style="font-weight: bold; font-size: 20px;"> Username </label>
+					<input type="text" class="form-control" id="email"
+						style="font-weight: bold; background-color: rgba(255, 255, 255, 0.4);"
+						value="" ng-model="loginForm.userName">
+				</div>
+				<div class="form-group">
+					<label style="font-weight: bold; font-size: 20px;">Password</label>
+					<div class="input-group">
+						<input type="password" class="form-control"
+							style="font-weight: bold; background-color: rgba(255, 255, 255, 0.4);"
+							id="pass" value="" ng-model="loginForm.password"> <span
+							class="input-group-btn">
+							<button type="button" class="bg-hide"
+								onclick="if(pass.type=='text'){ pass.type='password'; but.src='img/772420-200.png'; } else{ pass.type='text'; but.src='img/img_17878.png';}">
+								<img src="img/772420-200.png" height="20" width="20" id="but" />
+							</button>
+						</span>
+					</div>
+
+				</div>
+				<br>
+
+				<!-- <a href="partials/Homepage.html"><button class="btn btn-primary">Login</button></a> -->
+
+				<div class="form-group" align="center">
+					<button type="submit" class="btn btn-primary">Login</button>
+					&nbsp &nbsp &nbsp
+					<button type="reset" class="btn btn-primary" value="Reset" ng-click="reset()">Reset</button>
+
+				</div>
+				<div ng-bind="loginForm.message" style="color:red; font-weight: bold;" align="center">
+				</div>
+				<br> <br> <br>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+Include the html files in the partials folder.

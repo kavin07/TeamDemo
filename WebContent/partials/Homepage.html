@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Comparo</title>
+<script src="../js/shared/jquery.js"></script>
+<script src="../js/shared/jquery-1.11.3.min.js"></script>
+<script src="../js/shared/bootstrap.js"></script>
+<script src="../js/shared/angular.js"></script>
+<script src="../js/shared/angular-route.js"></script>
+<script src="../js/shared/angular-cookies.js"></script>
+<script src="../js/user/Application.js"></script>
+<script src="../js/user/Controller.js"></script>
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+
+</head>
+
+<body ng-app="Application" background="../img/OnePlus-6.jpg"
+	style="background-size: cover" ng-controller="HomeController"
+	ng-init="getAllMobiles()">
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbarCollapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand" style="color: white">Comparo-Arena</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				
+			
+				<ul class="nav navbar-nav navbar-right">
+					<li><a>Welcome {{ " "+username}} </a></li>
+					<li><a ng-click="logout()" class="logout-text">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="row">
+		<form ng-submit="filterForm.submitTheForm()">
+			<div class="col-md-2"
+				style="color: black; margin-left: 50px; height: 550px; background-color: rgba(255, 255, 255, 0.9); border-radius: 25px;">
+
+				<h3 id="text_color" style="color: black; font-family: monospace;" align="center">
+					<b>Our Products</b>
+				</h3>
+
+				<label>Available inBrand:</label>
+				<div class="scrollbar" id="style-10">
+					<div class="force-overflow">
+						
+							<div class="filter">
+
+								<div>
+									<div ng-repeat="pants in pantsGroup">
+										<b><input type="checkbox" ng-model="usePants[pants]" />&nbsp;{{pants}}</b>
+										<!-- <span>({{(filteredPlayers | filter:brand).length}})</span> -->
+									</div>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+
+				<hr>
+				<label>Available in ROM: </label>
+				<div class="scrollbar" id="style-10">
+					<div class="force-overflow">
+						
+							<div class="filter">
+
+								<div>
+									<div ng-repeat="pants in shirtsGroup">
+										<b><input type="checkbox" ng-model="useShirts[pants]" />&nbsp;{{pants}}</b>
+										<!-- <span>({{(filteredPlayers | filter:brand).length}})</span> -->
+									</div>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+
+				
+				<hr>
+				
+
+<!-- 
+				<label>Sort:</label>
+				<div class="container" style="margin-left: -8px;"
+					ng-init="content = 'first'">
+					<label class="radio-inline"> <input type="radio" id="first"
+						name="content" ng-model="content" value="first">Low to
+						High
+					</label> 
+					<label class="radio-inline"> <input type="radio"
+						id="other" name="content" ng-model="content" value="other">High
+						to Low
+					</label>
+				</div> -->
+
+				<label>Available in Prices:</label>
+				
+				<div class="scrollbar" id="style-10">
+					<div class="force-overflow">
+						
+							<div class="filter">
+
+								<div>
+									<div ng-repeat="pants in shoesGroup">
+										<b><input type="checkbox" ng-model="useShoes[pants]" />&nbsp;Rs.{{pants}}</b>
+										<!-- <span>({{(filteredPlayers | filter:brand).length}})</span> -->
+									</div>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+
+				<br>
+				
+				
+
+
+<!-- 			<div class="form-group">
+				<label>Price </label> <br>
+				<div class="rangeslider">
+							
+                                <input class="min" name="range_1" type="range" min="1" max="10000" ng-model="minvalue" value=10 />
+                                <input class="max" name="range_1" type="range" min="1" max="10000" ng-model="maxvalue" value=90/>
+                                <br>
+                                <span  class="range_min light left">{{"Rs. "+minvalue+"(min)"}}</span>
+                                <span  class="range_max light right">{{"Rs. "+maxvalue+"(max)"}}</span>
+   <br>
+   <br>
+   <br>
+   
+            
+					<span class="range_min light left">Min&nbsp<input
+						type="Number" value="1000" style="width: 70px;"></span> <span
+						class="range_min light right"><input type="Number"
+						value="30000" style="width: 70px; margin-left: -75px;">Max</span>
+				</div>
+			</div>  -->
+
+				<div class="form-group" style="margin-top: -35px;" align="center">
+
+					<button type="reset" class="btn btn-primary" value="Reset"
+						onclick="location.href=location.href">Reset</button>
+
+				</div>
+
+			</div>
+
+
+			<div class="col-md-8"
+				style="color: black; margin-left: 50px; height: 550px; background-color: transparent; border-radius: 25px;">
+
+
+
+				<div class="row">
+
+
+					<div class="col-md-12"
+						style="color: black; background-color: rgba(255, 255, 255, 0.9); margin-left: 40px; margin-top: 5px; height: 55px; border-radius: 10px;">
+
+
+    					    
+     					 <div>
+							<input type="search" ng-model="query" style="margin-top: 12px;"
+								placeholder="Something Specific in mind?">
+								<span class="mybadge">
+							<button type="button" class="buttonmy" ng-click="Search.form"><img src="../img/search.png"
+								class="img-responsive img-rounded"
+								    alt="Search" style="width:25px; height:25px;" ></span></button>
+							</input>
+						</div>
+
+						
+						<div style="margin-top: -34px; float: right;" ng-init=" content = 'other' " >
+							
+							
+						<label style="margin-left: 20px; color:gray;">Sort
+						</label>
+							
+							<input type="radio" name="content" class="input-hidden" ng-change="descending()" id="other" ng-model="content" value="other" />
+								<label for="other">
+								  <img 
+								    src="../img/htol.png" class="img-responsive img-rounded" 
+								    alt="List View" style="width:28px; height:28px;" />
+								</label>
+								
+							<input type="radio" name="content" class="input-hidden" id="first" ng-change="ascending()" ng-model="content" value="first" />
+								<label for="first">
+								  <img 
+								    src="../img/ltoh.png" class="img-responsive img-rounded" 
+								    alt="Grid View" />
+								</label>
+
+						</div>
+
+
+						<div style="margin-top: -34px; float: right;" ng-init="view = 'grid'">
+							
+							
+						<label style="margin-left: 120px; color:gray;">View
+						</label>
+							
+							<input type="radio" name="view" class="input-hidden" id="list" ng-model="view" value="list" />
+								<label for="list">
+								  <img 
+								    src="../img/list.png" class="img-responsive img-rounded" 
+								    alt="List View" style="width:28px; height:28px;" />
+								</label>
+								
+							<input type="radio" name="view" class="input-hidden" id="grid" ng-model="view" value="grid" />
+								<label for="grid">
+								  <img 
+								    src="../img/grid.png" class="img-responsive img-rounded" 
+								    alt="Grid View" />
+								</label>
+
+						</div>
+
+					</div>
+
+					<div class="col-md-12"
+						style="color: black; background-color: rgba(255, 255, 255, 0.9); margin-left: 40px; margin-top: 5px; height: 420px; border-radius: 10px; overflow-y: scroll"
+						id="style-10">
+
+						<label ng-show="view == 'grid'">
+						<label ng-show="content == 'other'"> <label>Explore what we have . . . .</label>
+							<div class="grid-container">
+							
+							
+							
+							
+							
+
+								<label ng-repeat="phone in filteredPlayers | filter:query">
+
+									<div class="grid-item">
+
+										<img src="../img/phone.jpg" /><br> {{"Mobile Name:
+										"+phone.name}}<br> {{"Mobile Brand: "+phone.brand}}<br>
+										{{"Quantity: "+phone.quantity}}<br> {{"Price:
+										"+phone.sellingPrice}}<br> {{"ProductId:
+										"+phone.productId}}<br>
+
+									</div>
+
+									<hr>
+								</label>
+
+							</div>
+
+						</label> 
+						<label ng-show="content == 'first'"> <label>Explore what we have . . . .</label>
+							<div class="grid-container">
+
+								<label ng-repeat="phone in filteredPlayers | filter:query">
+
+									<div class="grid-item">
+
+										<img src="../img/phone.jpg" /><br> {{"Mobile Name:
+										"+phone.name}}<br> {{"Mobile Brand: "+phone.brand}}<br>
+										{{"Quantity: "+phone.quantity}}<br> {{"Price:
+										"+phone.sellingPrice}}<br> {{"ProductId:
+										"+phone.productId}}<br>
+
+									</div>
+									<hr>
+								</label>
+								
+							</div>
+						</label> <br />
+						
+					</label>
+						
+					<label ng-show="view == 'list'">
+						<label ng-show="content == 'other'"> <label>Explore what we have . . . .</label>
+							<div class="list-container">
+
+								<label ng-repeat="phone in filteredPlayers | filter:query">
+
+									<div class="list-item">
+
+										<img src="../img/phone.jpg" /><br> {{"Mobile Name:
+										"+phone.name}}<br> {{"Mobile Brand: "+phone.brand}}<br>
+										{{"Quantity: "+phone.quantity}}<br> {{"Price:
+										"+phone.sellingPrice}}<br> {{"ProductId:
+										"+phone.productId}}<br>
+
+									</div>
+
+									<hr>
+								</label>
+
+							</div>
+
+						</label> 
+						<label ng-show="content == 'first'"> <label>Explore what we have . . . .</label>
+							<div class="list-container">
+
+								<label ng-repeat="phone in filteredPlayers | filter:query">
+
+									<div class="list-item">
+
+										<img src="../img/phone.jpg" /><br> {{"Mobile Name:
+										"+phone.name}}<br> {{"Mobile Brand: "+phone.brand}}<br>
+										{{"Quantity: "+phone.quantity}}<br> {{"Price:
+										"+phone.sellingPrice}}<br> {{"ProductId:
+										"+phone.productId}}<br>
+
+									</div>
+									<hr>
+								</label>
+								
+							</div>
+						</label> <br />
+						
+					</label>
+						
+					</div>
+
+
+					<div class="col-md-12"
+						style="color: black; background-color: rgba(255, 255, 255, 0.9); margin-left: 40px; margin-top: 5px; height: 55px; border-radius: 10px;">
+
+
+						<div style="margin-top: 10px; float: left;">
+							<a href="Compare.html" ><button type="button" class="btn btn-primary"
+								ng-click="compareSelection">Compare Phones</button></a>
+						</div>
+
+						
+						<div style="margin-top: 10px; float: right;">
+							<a href="viewrelated.html" ><button type="button" class="btn btn-primary"
+								ng-click="compareSelection">View Similar Phones</button></a>
+						</div>
+					</div>
+
+
+				</div>
+
+
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>

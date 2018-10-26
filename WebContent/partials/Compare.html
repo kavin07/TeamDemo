@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Mobile World</title>
+<!-- ******************************************************** -->
+<script src="../js/shared/jquery.js"></script>
+<script src="../js/shared/jquery-1.11.3.min.js"></script>
+<script src="../js/shared/bootstrap.js"></script>
+<script src="../js/shared/angular.js"></script>
+<script src="../js/shared/angular-route.js"></script>
+<script src="../js/shared/angular-cookies.js"></script>
+<script src="../js/user/Application.js"></script>
+<script src="../js/user/Controller.js"></script>
+<script src="../js/user/CompareController.js"></script>
+
+
+
+<!-- <script src="../js/shared/jasmine-min.js"></script>
+<script src="../js/shared/jquery-1.11.3.min.js"></script>
+<script src="../js/shared/jasmine-html.js"></script> -->
+
+<script type="text/javascript">
+	function showDiv() {
+		document.getElementById('welcomeDiv').style.display = "block";
+
+	}
+</script>
+<!-- ******************************************************** -->
+<link rel="stylesheet" href="../css/bootstrap.css">
+
+<style type="text/css">
+
+
+</style>
+</head>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Comparo</title>
+<script src="../js/shared/jquery.js"></script>
+<script src="../js/shared/jquery-1.11.3.min.js"></script>
+<script src="../js/shared/bootstrap.js"></script>
+<script src="../js/shared/angular.js"></script>
+<script src="../js/shared/angular-route.js"></script>
+<script src="../js/shared/angular-cookies.js"></script>
+<script src="../js/user/Application.js"></script>
+<script src="../js/user/Controller.js"></script>
+<script src="../js/user/CompareController.js"></script>
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+
+</head>
+
+<body ng-app="Application" background="../img/OnePlus-6.jpg"
+       style="background-size: cover" ng-controller="CompareController" ng-init="getAllMobiles()">
+
+       <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                     <div class="navbar-header">
+                           <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                  data-target="#navbarCollapse">
+                                  <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                                         class="icon-bar"></span>
+                           </button>
+                           <a href="#" class="navbar-brand" style="color: white">Comparo-Arena</a>
+                     </div>
+                     <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                           <ul class="nav navbar-nav">
+                                  <li><a href="Homepage.html">Home Page</a></li>
+                           </ul>
+
+                           <ul class="nav navbar-nav navbar-right">
+                                  
+                                  <li><a ng-click="logout()" class="logout-text">Logout</a></li>
+                           </ul>
+
+                     </div>
+              </div>
+       </nav>
+
+
+	
+	<div ng-init=generateList()></div>
+	<marquee><h3 style="color: rgba(255, 255, 255, 0.9);"><b><i>The fight of the best four phones!!</i></b></h3></marquee>
+	
+
+
+
+	<div class="row">
+		<div class="container-fluid">
+
+		<form>
+			<div class="form-group col-md-3">
+				<select style="color: black;" class="form-control" ng-model="compareForm1.name">
+					<option value="">--Choose a mobile--</option>
+					<option ng-repeat="item in phoneList" value={{item}}>{{item}}</option>
+				</select>
+			</div>
+
+
+			<div class="form-group col-md-3">
+				<select style="color: black;" class="form-control" ng-model="compareForm2.name">
+					<option value="">--Choose a mobile--</option>
+					<option ng-repeat="item in phoneList" value={{item}}>{{item}}</option>
+				</select>
+			</div>
+
+			<div class="form-group col-md-3">
+				<select style="color: black;" class="form-control" ng-model="compareForm3.name">
+					<option value="">--Choose a mobile--</option>
+					<option ng-repeat="item in phoneList" value={{item}}>{{item}}</option>
+				</select>
+			</div>
+
+			<div class="form-group col-md-3">
+				<select style="color: black;" class="form-control" ng-model="compareForm4.name">
+					<option value="">--Choose a mobile--</option>
+					<option ng-repeat="item in phoneList" value={{item}}>{{item}}</option>
+				</select>
+			</div>
+
+
+			<br> <br>
+
+			<div class="col-md-12" align="center">
+
+				<div class="col-md-2 col-md-offset-4">
+					<input type="button" class="btn btn-info btn-block"
+						value="Comparo-compare" ng-click="getCompare()"
+						onclick="showDiv()" />
+				</div>
+
+				<div class="col-md-2">
+					<input type="button" class="btn btn-info btn-block"
+						value="Reset" onClick="location.href=location.href">
+				</div>
+
+			</div>
+			<div>&nbsp;</div>
+
+
+
+			<div id="welcomeDiv" style="display: none; ">
+				<div class="col-md-12">
+				
+					<div ng-if="compareForm1.name" class="col-md-3">
+					<br>
+						<div ng-init="getPhoneDetails1()"></div>
+						<div style="color: black; margin-left: 20px; margin-top: -15px; height: 230px; background-color: rgba(255, 255, 255, 0.9); border-radius: 7px;">
+						
+						<table class="table" style="border: none;">
+							<tr>
+								<td>Name
+								
+								<td><span ng-style="{color:'black'}">{{compareForm1.name}}</span>
+								
+							</tr>
+							<tr>
+								<td>Discount
+								
+								<td><span ng-style="{color:'black'}">{{compareForm1.discount}}</span>
+								
+							</tr>
+							<tr>
+								<td>sellingPrice
+								
+								<td><span ng-style="{color:'black'}">{{compareForm1.sellingPrice}}</span>
+								
+							</tr>
+							<tr>
+								<td>specification
+								
+								<td><span ng-style="{color:'black'}">{{compareForm1.specification}}</span>
+								
+							</tr>
+						</table>
+					</div>
+					</div>
+
+					<div ng-if="compareForm2.name" class="col-md-3">
+					<br>
+						<div ng-init="getPhoneDetails2()"></div>
+						<div style="color: black; margin-left: 20px; margin-top: -15px; height: 230px; background-color: rgba(255, 255, 255, 0.9); border-radius: 7px;">
+						
+						<table class="table" style="border: none;">
+							<tr>
+								<td>Name
+								
+								<td><span ng-style="{color:'black'}">{{compareForm2.name}}</span>
+								
+							</tr>
+							<tr>
+								<td>Discount
+								
+								<td><span ng-style="{color:'black'}">{{compareForm2.discount}}</span>
+								
+							</tr>
+							<tr>
+								<td>sellingPrice
+								
+								<td><span ng-style="{color:'black'}">{{compareForm2.sellingPrice}}</span>
+								
+							</tr>
+							<tr>
+								<td>specification
+								
+								<td><span ng-style="{color:'black'}">{{compareForm2.specification}}</span>
+								
+							</tr>
+						</table>
+					</div>
+					</div>
+
+
+					<div ng-if="compareForm3.name" class="col-md-3">
+					<br>
+						<div ng-init="getPhoneDetails3()"></div>
+						<div style="color: black; margin-left: 20px; margin-top: -15px; height: 230px; background-color: rgba(255, 255, 255, 0.9); border-radius: 7px;">
+						
+						<table class="table" style="border: none;">
+							<tr>
+								<td>Name
+								
+								<td><span ng-style="{color:'black'}">{{compareForm3.name}}</span>
+								
+							</tr>
+							<tr>
+								<td>Discount
+								
+								<td><span ng-style="{color:'black'}">{{compareForm3.discount}}</span>
+								
+							</tr>
+							<tr>
+								<td>sellingPrice
+								
+								<td><span ng-style="{color:'black'}">{{compareForm3.sellingPrice}}</span>
+								
+							</tr>
+							<tr>
+								<td>specification
+								
+								<td><span ng-style="{color:'black'}">{{compareForm3.specification}}</span>
+								
+							</tr>
+						</table>
+					</div>
+					</div>
+
+
+					<div ng-if="compareForm4.name" class="col-md-3">
+					<br>
+						<div ng-init="getPhoneDetails4()"></div>
+						<div style="color: black; margin-left: 20px; margin-top: -15px; height: 230px; background-color: rgba(255, 255, 255, 0.9); border-radius: 7px;">
+						
+						<table class="table" style="border: none;">
+							<tr>
+								<td>Name
+								
+								<td><span ng-style="{color:'black'}">{{compareForm4.name}}</span>
+								
+							</tr>
+							<tr>
+								<td>Discount
+								
+								<td><span ng-style="{color:'black'}">{{compareForm4.discount}}</span>
+								
+							</tr>
+							<tr>
+								<td>sellingPrice
+								
+								<td><span ng-style="{color:'black'}">{{compareForm4.sellingPrice}}</span>
+								
+							</tr>
+							<tr>
+								<td>specification
+								
+								<td><span ng-style="{color:'black'}">{{compareForm4.specification}}</span>
+								
+							</tr>
+						</table>
+					</div>
+					</div>
+
+				
+				<br>
+				<br>
+				<br>
+				<div class="col-md-10" style="color: black; background-color: rgba(255, 255, 255, 0.8); margin-left: 120px;  height:120px; margin-top: 5px;  border-radius: 10px;">
+                           <h5>
+                         <b><center>Best One</center></b></h5>
+    
+                                 
+                                  <h2>
+                                   <b style="color: grey;"><center>{{message}}</center></b>
+                           
+                           </h2>
+                         
+              </div>
+                     
+
+				
+				
+				
+			</div>
+	
+		</div>
+	</div>
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
